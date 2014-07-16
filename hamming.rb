@@ -1,7 +1,19 @@
 require_relative "testing_library"
 
 def hamming(strand_1, strand_2)
+  count = 0
 
+  strand_1.each_char.with_index do |char, index|
+    other_char = strand_2[index]
+
+    next unless other_char
+
+    unless char == other_char
+      count += 1
+    end
+  end
+
+  count
 end
 
 check("Hamming distance between identical strands",
